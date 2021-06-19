@@ -57,7 +57,7 @@ self.addEventListener("install", function(evt) {
     if (event.request.url.includes("/api/")) {
       // make network request and fallback to cache if network request fails (offline)
       event.respondWith(
-        caches.open(DATA_CACHE_NAME).then(cache => {
+        caches.open(RUNTIME_CACHE).then(cache => {
           return fetch(event.request)
             .then(response => {
               cache.put(event.request, response.clone());
